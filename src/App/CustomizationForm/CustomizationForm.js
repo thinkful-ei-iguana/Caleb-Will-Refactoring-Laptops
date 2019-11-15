@@ -1,17 +1,31 @@
-import React, {Component} from 'react';
+import React from 'react';
 import Feature from './Feature';
 
-class CustomizationForm extends Component {
 
+const CustomizationForm = (props) => {
 
-  render() {
+  const features = Object.keys(props.features).map((feature, idx) => {
+    const featureHash = feature + '-' + idx;
+    
     return (
-      <div>
-        <p>{this.props.test} in CustomizationForm</p>
-        <Feature test={this.props.test} />
-      </div>
-    )
-  }
+      <Feature 
+        updateFeature={props.updateFeature}
+        features={props.features}
+        featureHash={featureHash}
+        feature={feature}
+        idx={idx}
+        key={idx}
+        state={props.state}
+      />
+    );
+  });
+  
+  return (
+    <form className="main__form">
+      <h2>Customize your laptop</h2>
+      {features}
+    </form>
+  )
 }
 
 export default CustomizationForm;

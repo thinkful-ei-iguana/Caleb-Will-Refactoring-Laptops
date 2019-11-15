@@ -1,17 +1,32 @@
-import React, {Component} from 'react';
+import React from 'react';
 import FeatureOption from './FeatureOption';
+import slugify from 'slugify';
 
-class Feature extends Component{
+const Feature = (props) => {
 
-
-  render() {
+  const options = props.features[props.feature].map((item, idx) => {
+    const itemHash = slugify(JSON.stringify(item));
+    
     return (
-      <div>
-        <p>{this.props.test} in Feature</p>
-        <FeatureOption test={this.props.test} />
-      </div>
+      <FeatureOption 
+        itemHash={itemHash}
+        item={item}
+        feature={props.feature}
+        state={props.state}
+        updateFeature={props.updateFeature}
+        key={idx}
+      />
     )
-  }
+  });
+
+  return (
+    <fieldset className="feature" key={props.featureHash}>
+      <legend className="feature__name">
+        <h3>{props.feature}</h3>
+      </legend>
+      {options}
+    </fieldset>
+  )
 }
 
 export default Feature;
