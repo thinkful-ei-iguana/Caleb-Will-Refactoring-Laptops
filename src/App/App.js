@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
+import CustomizationForm from './CustomizationForm/CustomizationForm';
 
 // Normalizes string as a slug - a string that is safe to use
 // in both URLs and html attributes
 import slugify from 'slugify';
 
 import './App.css';
+import CartSummary from './CartSummary/CartSummary';
 
 // This object will allow us to
 // easily convert numbers into US dollar values
@@ -116,7 +118,12 @@ class App extends Component {
             </div>
           </section>
         </main>
+        <div>
+          <CustomizationForm test="success" />
+          <CartSummary test="success" />
+        </div>
       </div>
+      
     );
   }
 }
