@@ -1,15 +1,13 @@
 import React from 'react';
 import FeatureOption from './FeatureOption';
-import slugify from 'slugify';
 
 const Feature = (props) => {
 
   const options = props.features[props.feature].map((item, idx) => {
-    const itemHash = slugify(JSON.stringify(item));
     
     return (
       <FeatureOption 
-        itemHash={itemHash}
+        //itemHash={itemHash}
         item={item}
         feature={props.feature}
         state={props.state}
